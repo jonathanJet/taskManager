@@ -14,7 +14,7 @@ import java.sql.SQLException;
  * @author administrador
  */
 public class ConexionDB {
-     public static Connection conectar() {
+     /*public static Connection conectar() {
         Connection con = null;
 
         String password = "";
@@ -57,7 +57,7 @@ public class ConexionDB {
                         + "loginTimeout=30;"; */
        //String url = "jdbc:sqlserver://DESKTOP-MVTAJC8;instanceName=SQLEXPRESS;databaseName=db_prueba";
        /*String url = "jdbc:sqlserver://DESKTOP-MVTAJC8\\SQLEXPRESS;databaseName=db_prueba;";
-*/
+
         try {
 
             String url = "jdbc:sqlserver://DESKTOP-MVTAJC8\\SQLEXPRESS:1433;databaseName=db_prueba";
@@ -75,12 +75,12 @@ Connection conn = DriverManager.getConnection(url,"sa","sa");
                 // Print results from select statement
                 while (resultSet.next()) {
                     System.out.println(resultSet.getString(2) + " " + resultSet.getString(3));
-                }*/
+                }
         } catch (SQLException e) {
                 System.out.println("No se pudo conectar a la base de datos");
                 e.printStackTrace();
         }
         
     }
-        
+       */ 
 }
