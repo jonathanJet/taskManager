@@ -15,6 +15,7 @@ public class Usuario {
     private String Usuario;
     private String Contrasenia;
     private int activo;
+    private int idRol;
 
     public Usuario() {
     }
@@ -47,6 +48,10 @@ public class Usuario {
         return activo;
     }
 
+    public int getIdRol() {
+        return idRol;
+    }
+
     public void setId(int Id) {
         this.Id = Id;
     }
@@ -65,6 +70,10 @@ public class Usuario {
 
     public void setActivo(int activo) {
         this.activo = activo;
+    }
+
+    public void setIdRol(int idRol) {
+        this.idRol = idRol;
     }
     
     
