@@ -17,7 +17,7 @@ import com.taskmanager.model.Usuario;
 public class main {
     
      /**
-     * @param args the command line arguments
+     * @param args the command line arguments   
      */
     public static void main(String[] args) {
         // TODO code application logic here
@@ -25,7 +25,7 @@ public class main {
         Usuario user = new Usuario();
         Login login = new Login();
         
-        LoginController controller = new LoginController( login, user);
+        LoginController controller = new LoginController(login, user);
         
         controller.iniciar();
         login.setVisible(true);

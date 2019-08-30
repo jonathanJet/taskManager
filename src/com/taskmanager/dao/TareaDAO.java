@@ -45,24 +45,9 @@ public class TareaDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }/*
-
-     public void addUserRol(Usuario user) {
-        try {
-            PreparedStatement preparedStatement = 
-            connection.prepareStatement("insert into tbl_usuario_rol(id_usuario,id_rol) values (?, ?)");
-
-            // Parameters start with 1
-            preparedStatement.setInt(1, user.getId());
-            preparedStatement.setInt(2, user.getIdRol());
-
-            preparedStatement.executeUpdate();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
+ /*
     public void deleteUser(int userId) {
         try {
             PreparedStatement preparedStatement = 
@@ -75,26 +60,28 @@ public class TareaDAO {
             e.printStackTrace();
         }
     }
-
-    public void updateUser(Usuario user) {
+*/
+    
+    public void actualizarTarea(Tarea tarea) {
         try {
             PreparedStatement preparedStatement = 
-                    connection.prepareStatement("update tbl_usuario set nombre=?, usuario=?, contrasenia=?, activo=?" +
-                    "where id_usuario=?");
+                    connection.prepareStatement("update tbl_tarea set nombre=?, descripcion=?, tiempo_estimado=?, tiempo_real=?, id_estado=?" +
+                    "where id_tarea=?");
 
             // Parameters start with 1
-            preparedStatement.setString(1, user.getNombre());
-            preparedStatement.setString(2, user.getUsuario());
-            preparedStatement.setString(3, user.getContrasenia());
+            preparedStatement.setString(1, tarea.getNombre());
+            preparedStatement.setString(2, tarea.getDescripcion());
+            preparedStatement.setInt(3, tarea.getTiempo_Estimado());
             //preparedStatement.setDate(3, new java.sql.Date(user.getDob().getTime()));
-            preparedStatement.setInt(4, user.getActivo());
-            preparedStatement.setInt(5, user.getId());
+            preparedStatement.setInt(4, tarea.getTiempo_Real());
+            preparedStatement.setInt(5, tarea.getIdEstado());
+            preparedStatement.setInt(6, tarea.getId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-
+/*
     public List<Usuario> getAllUsers() {
         List<Usuario> users = new ArrayList<Usuario>();
         try {

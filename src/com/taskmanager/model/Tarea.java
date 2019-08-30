@@ -15,7 +15,8 @@ public class Tarea {
     private String Descripcion;
     private int Tiempo_Estimado;
     private int Tiempo_Real;
-    private int idEstado;    
+    private int idEstado;  
+    private int idUsuario;
     
     public Tarea() {
     }
@@ -52,6 +53,10 @@ public class Tarea {
         return idEstado;
     }
 
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+    
     public void setId(int Id) {
         this.Id = Id;
     }
@@ -74,6 +79,10 @@ public class Tarea {
 
     public void setIdEstado(int idEstado) {
         this.idEstado = idEstado;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
          
 }

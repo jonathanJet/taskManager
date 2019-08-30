@@ -21,7 +21,7 @@ public class ConexionDB {
     public static Connection conectar() {
         Connection conn = null;
 
-        String password = "1234";
+       String password = "1234";
         String usuario = "kfigueroa";
         String instance = "SDPJ1";
         String database = "db_proj";

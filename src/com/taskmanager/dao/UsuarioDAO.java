@@ -119,7 +119,7 @@ public class UsuarioDAO {
         try {
 
             PreparedStatement preparedStatement = 
-                    connection.prepareStatement("select a.id_rol,b.* from tbl_usuario_rol a, tbl_usuario b where a.id_usuario =b.id_usuario and id_usuario=?");
+                    connection.prepareStatement("select a.id_rol,b.* from tbl_usuario_rol a, tbl_usuario b where a.id_usuario =b.id_usuario and b.id_usuario=?");
 
             preparedStatement.setInt(1, userId);
             ResultSet rs = preparedStatement.executeQuery();
@@ -137,22 +137,45 @@ public class UsuarioDAO {
         return user;
     }
     
-    public int login(Usuario user) {
-        int band = 0;
+    public Usuario login(Usuario user) {
+         Usuario userLogin = new Usuario();
         try {
             PreparedStatement preparedStatement = 
-                    connection.prepareStatement("select a.* from tbl_usuario a where a.usuario=? and a.contrasenia=?");
+                    connection.prepareStatement("select c.*,b.* from tbl_usuario_rol a, tbl_usuario b, tbl_roles c where c.id_rol=a.id_rol and a.id_usuario =b.id_usuario and b.usuario=? and b.contrasenia=?");
 
             preparedStatement.setString(1, user.getUsuario());
             preparedStatement.setString(2, user.getContrasenia());
             
             ResultSet rs = preparedStatement.executeQuery();
             if (rs.next()) {
-                band = 1;
+                userLogin.setId(rs.getInt("id_usuario"));
+                userLogin.setNombre(rs.getString("nombre"));
+                userLogin.setUsuario(rs.getString("usuario"));
+                userLogin.setContrasenia(rs.getString("contrasenia"));
+                userLogin.setActivo(rs.getInt("activo"));
+                userLogin.setIdRol(rs.getInt("id_rol"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return band;
+        return userLogin;
+    }
+    
+     public List<Usuario> traerResponsables() {
+        List<Usuario> users = new ArrayList<Usuario>();
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("select a.id_usuario, a.nombre from tbl_usuario a, tbl_usuario_rol b where a.id_usuario = b.id_usuario and b.id_rol = 1");
+            while (rs.next()) {
+                Usuario usuario = new Usuario();
+                usuario.setId(rs.getInt("id_usuario"));
+                usuario.setNombre(rs.getString("nombre"));
+               
+                users.add(usuario);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return users;
     }
 }

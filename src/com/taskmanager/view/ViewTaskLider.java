@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.taskManager.view;
+package com.taskmanager.view;
 
 /**
  *
@@ -107,7 +107,6 @@ public class ViewTaskLider extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -231,8 +230,8 @@ public class ViewTaskLider extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnActualizar;
-    private javax.swing.JButton btnCrear;
+    public javax.swing.JButton btnActualizar;
+    public javax.swing.JButton btnCrear;
     public javax.swing.JComboBox jEstados;
     private javax.swing.JLabel jLabel1;
     public javax.swing.JComboBox jResponsables;

@@ -27,7 +27,8 @@ public class UserController implements ActionListener{
     private Rol rol;
     
     public UserController(CreateUser view,Usuario model){
-    
+            System.out.println("V1121");
+
         this.createUserView = view;
         this.userModel = model;
         
