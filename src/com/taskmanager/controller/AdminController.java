@@ -10,11 +10,13 @@ import com.taskmanager.dao.EstadoDAO;
 import com.taskmanager.dao.TareaDAO;
 import com.taskmanager.dao.UsuarioDAO;
 import com.taskmanager.model.Estado;
+import com.taskmanager.model.Tarea;
 import com.taskmanager.view.ViewTaskLider;
 import com.taskmanager.model.Usuario;
 import com.taskmanager.view.CreateTask;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -30,6 +32,9 @@ public class AdminController implements ActionListener {
     
     private UsuarioDAO usuarioDAO = new UsuarioDAO();
     private Usuario usuario;
+    
+    private TareaDAO tareaDao = new TareaDAO();
+    private Tarea tarea = new Tarea();
     
     public AdminController(ViewTaskLider viewTaskLider,Usuario user){
     
@@ -59,6 +64,39 @@ public class AdminController implements ActionListener {
             usuario = usuarioDAO.traerResponsables().get(i);
             AdminView.jResponsables.addItem(usuario.getId()+"-"+usuario.getNombre());
         }   
+        
+        DefaultTableModel model = new DefaultTableModel();
+        Object[] columnsName = new Object[9];
+        
+        columnsName[0] = "Código";
+        columnsName[1] = "Tarea";
+        columnsName[2] = "Descripción";
+        columnsName[3] = "Tiempo Estimado";
+        columnsName[4] = "Tiempo Real";
+        columnsName[5] = "Responsable";
+        columnsName[6] = "id_usuario";
+        columnsName[7] = "id_estado";
+        columnsName[8] = "Estado";
+        
+        model.setColumnIdentifiers(columnsName);
+        
+        Object[] rowData = new Object[9];
+        for(int i = 0; i < tareaDao.cargarTareas().size(); i++){
+           tarea = tareaDao.cargarTareas().get(i);
+           rowData[0] = tarea.getId();
+           rowData[1] = tarea.getNombre();
+           rowData[2] = tarea.getDescripcion();
+           rowData[3] = tarea.getTiempo_Estimado();
+           rowData[4] = tarea.getTiempo_Real();
+           rowData[5] = tarea.getUsuario();
+           rowData[6] = tarea.getIdUsuario();
+           rowData[7] = tarea.getIdEstado();
+           rowData[8] = tarea.getEstado();
+
+           model.addRow(rowData);
+        }
+        
+        AdminView.listTask.setModel(model);
     }
 
     @Override

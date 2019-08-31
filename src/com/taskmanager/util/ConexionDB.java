@@ -21,16 +21,18 @@ public class ConexionDB {
     public static Connection conectar() {
         Connection conn = null;
 
-        String password = "1234";
+    /*String password = "1234";
         String usuario = "kfigueroa";
         String instance = "SDPJ1";
         String database = "db_proj";
-        
+        */
         try {
 
-            String url = "jdbc:sqlserver://SERVER-PRUEBAS\\" + instance + ":1433;databaseName=" + database;
+            String url = "jdbc:sqlserver://DESKTOP-MVTAJC8\\SQLEXPRESS:1433;databaseName=db_proj";
+			
+			
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            conn = DriverManager.getConnection(url, usuario, password);
+            conn = DriverManager.getConnection(url, "sa", "sa");
             
             if (conn != null) {
                     System.out.println("Conectado");

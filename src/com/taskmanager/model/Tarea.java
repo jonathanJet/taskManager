@@ -17,6 +17,8 @@ public class Tarea {
     private int Tiempo_Real;
     private int idEstado;  
     private int idUsuario;
+    private String Usuario;
+    private String Estado;
     
     public Tarea() {
     }
@@ -56,6 +58,14 @@ public class Tarea {
     public int getIdUsuario() {
         return idUsuario;
     }
+
+    public String getUsuario() {
+        return Usuario;
+    }
+
+    public String getEstado() {
+        return Estado;
+    }
     
     public void setId(int Id) {
         this.Id = Id;
@@ -84,5 +94,13 @@ public class Tarea {
     public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
     }
-         
+
+    public void setUsuario(String Usuario) {
+        this.Usuario = Usuario;
+    }
+
+    public void setEstado(String Estado) {
+        this.Estado = Estado;
+    }
+    
 }

@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 
 
@@ -83,28 +84,65 @@ public class TareaDAO {
             e.printStackTrace();
         }
     }
-/*
-    public List<Usuario> getAllUsers() {
-        List<Usuario> users = new ArrayList<Usuario>();
+
+    public void cargarTareas(javax.swing.JTable tabla) {
+        DefaultTableModel modelo = new DefaultTableModel();
+        tabla = new javax.swing.JTable(modelo);
+   
+        modelo.addColumn("Código");
+        modelo.addColumn("Tarea");
+        modelo.addColumn("Descripción");
+        modelo.addColumn("Tiempo Estimado");
+        modelo.addColumn("Tiempo Real");
+        modelo.addColumn("Responsable");
+        modelo.addColumn("id_usuario");
+        modelo.addColumn("id_estado");
+        modelo.addColumn("Estado");
+
         try {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("select a.id_rol,b.* from tbl_usuario_rol a, tbl_usuario b where a.id_usuario =b.id_usuario");
+            ResultSet rs = statement.executeQuery("select id_tarea, a.nombre Tarea, a.descripcion, a.tiempo_estimado, a.tiempo_real, b.nombre, b.id_usuario,c.id_estado,c.nombre_estado from tbl_tarea a, tbl_usuario b, tbl_estado c where a.id_usuario = b.id_usuario and a.id_estado = c.id_estado");
+            
             while (rs.next()) {
-                Usuario user = new Usuario();
-                user.setId(rs.getInt("id_usuario"));
-                user.setNombre(rs.getString("nombre"));
-                user.setUsuario(rs.getString("usuario"));
-                user.setContrasenia(rs.getString("contrasenia"));
-                user.setActivo(rs.getInt("activo"));
-                user.setIdRol(rs.getInt("id_rol"));
-                users.add(user);
+            // Se crea un array que será una de las filas de la tabla. 
+                Object [] fila = new Object[9]; // Hay seis columnas en la tabla
+                // Se rellena cada posición del array con una de las columnas de la tabla en base de datos.
+                for (int i=0;i<9;i++)
+                     fila[i] = rs.getObject(i+1); // El primer indice en rs es el 1, no el cero, por eso se suma 1.
+                // Se añade al modelo la fila completa.
+                    modelo.addRow(fila); 
+            }
+            tabla.setModel(modelo);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public List<Tarea> cargarTareas() {
+        List<Tarea> tareas = new ArrayList<Tarea>();
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("select id_tarea, a.nombre Tarea, a.descripcion, a.tiempo_estimado, a.tiempo_real, b.nombre, b.id_usuario,c.id_estado,c.nombre_estado from tbl_tarea a, tbl_usuario b, tbl_estado c where a.id_usuario = b.id_usuario and a.id_estado = c.id_estado");
+            while (rs.next()) {
+                Tarea tarea = new Tarea();
+                tarea.setId(rs.getInt("id_tarea"));
+                tarea.setNombre(rs.getString("Tarea"));
+                tarea.setDescripcion(rs.getString("descripcion"));
+                tarea.setTiempo_Estimado(rs.getInt("tiempo_estimado"));
+                tarea.setTiempo_Real(rs.getInt("tiempo_real"));
+                tarea.setIdUsuario(rs.getInt("id_usuario"));
+                tarea.setIdEstado(rs.getInt("id_estado"));               
+                tarea.setUsuario(rs.getString("nombre") );
+                tarea.setEstado(rs.getString("nombre_estado"));
+                
+                tareas.add(tarea);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return users;
+        return tareas;
     }
-
+/*
     public Usuario getUserById(int userId) {
         Usuario user = new Usuario();
         try {
