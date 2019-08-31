@@ -63,7 +63,7 @@ public class UserController implements ActionListener{
           userModel.setActivo(1);
           
           String[] parts = createUserView.roles.getSelectedItem().toString().split("-");
-          userModel.setIdRol(Integer.parseInt(parts[0])); 
+          userModel.setIdRol(Integer.parseInt(parts[0].trim())); 
           UsuarioDAO usuarioDAO =new UsuarioDAO();
           usuarioDAO.crearUsuario(userModel);
           usuarioDAO.addUserRol(userModel);

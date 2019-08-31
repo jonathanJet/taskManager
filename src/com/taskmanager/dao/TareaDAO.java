@@ -15,6 +15,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 /**
  *
  * @author administrador
@@ -30,14 +32,14 @@ public class TareaDAO {
     public void crearTarea(Tarea tarea) {
         try {
             PreparedStatement preparedStatement = 
-            connection.prepareStatement("insert into tbl_tarea(nombre,descripcion,tiempo_estimado,tiempo_real,id_estado) values (?, ?, ?, ?, ? )");
+            connection.prepareStatement("insert into tbl_tarea(id_tarea,nombre,descripcion,tiempo_estimado,tiempo_real,id_usuario,id_estado) values ((select coalesce(max(id_tarea),0) +1 from tbl_tarea), ?, ?, ?, 0, ?, ? )");
 
             // Parameters start with 1
             preparedStatement.setString(1, tarea.getNombre());
             preparedStatement.setString(2, tarea.getDescripcion());
             preparedStatement.setInt(3, tarea.getTiempo_Estimado());
             //preparedStatement.setDate(3, new java.sql.Date(user.getDob().getTime()));
-            preparedStatement.setInt(4, tarea.getTiempo_Real());
+             preparedStatement.setInt(4, tarea.getIdUsuario());
             preparedStatement.setInt(5, tarea.getIdEstado());
 
             preparedStatement.executeUpdate();
@@ -46,7 +48,7 @@ public class TareaDAO {
             e.printStackTrace();
         }
     }
-
+    
  /*
     public void deleteUser(int userId) {
         try {

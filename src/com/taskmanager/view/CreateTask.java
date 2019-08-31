@@ -29,18 +29,18 @@ public class CreateTask extends javax.swing.JFrame {
     private void initComponents() {
 
         txtnombre = new javax.swing.JTextField();
-        txtTiempoEstimado = new javax.swing.JPasswordField();
         lblUsuario = new javax.swing.JLabel();
-        btnCrearUsuario = new javax.swing.JToggleButton();
+        btnCrearTarea = new javax.swing.JToggleButton();
         lblNombre = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         lblContraseña = new javax.swing.JLabel();
         lblContraseña1 = new javax.swing.JLabel();
         jResponsables = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        txtDescripcion = new javax.swing.JTextPane();
         jEstados = new javax.swing.JComboBox();
         lblContraseña2 = new javax.swing.JLabel();
+        txtTiempoEstimado = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,18 +50,12 @@ public class CreateTask extends javax.swing.JFrame {
             }
         });
 
-        txtTiempoEstimado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTiempoEstimadoActionPerformed(evt);
-            }
-        });
-
         lblUsuario.setText("Descripción");
 
-        btnCrearUsuario.setText("Guardar Tarea");
-        btnCrearUsuario.addActionListener(new java.awt.event.ActionListener() {
+        btnCrearTarea.setText("Guardar Tarea");
+        btnCrearTarea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCrearUsuarioActionPerformed(evt);
+                btnCrearTareaActionPerformed(evt);
             }
         });
 
@@ -75,7 +69,7 @@ public class CreateTask extends javax.swing.JFrame {
 
         jResponsables.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jScrollPane1.setViewportView(jTextPane1);
+        jScrollPane1.setViewportView(txtDescripcion);
 
         jEstados.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -96,15 +90,14 @@ public class CreateTask extends javax.swing.JFrame {
                             .addComponent(lblNombre)
                             .addComponent(lblContraseña1))
                         .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel1)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                                .addComponent(txtnombre)
-                                .addComponent(txtTiempoEstimado, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                            .addComponent(txtnombre, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jResponsables, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jEstados, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCrearUsuario))))
+                            .addComponent(btnCrearTarea)
+                            .addComponent(txtTiempoEstimado))))
                 .addContainerGap(79, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -121,10 +114,10 @@ public class CreateTask extends javax.swing.JFrame {
                     .addComponent(lblUsuario)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtTiempoEstimado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblContraseña))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblContraseña)
+                    .addComponent(txtTiempoEstimado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jResponsables, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblContraseña1))
@@ -133,7 +126,7 @@ public class CreateTask extends javax.swing.JFrame {
                     .addComponent(lblContraseña2)
                     .addComponent(jEstados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btnCrearUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCrearTarea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(21, 21, 21))
         );
 
@@ -144,13 +137,9 @@ public class CreateTask extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtnombreActionPerformed
 
-    private void btnCrearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearUsuarioActionPerformed
+    private void btnCrearTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearTareaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCrearUsuarioActionPerformed
-
-    private void txtTiempoEstimadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTiempoEstimadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTiempoEstimadoActionPerformed
+    }//GEN-LAST:event_btnCrearTareaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -188,18 +177,18 @@ public class CreateTask extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JToggleButton btnCrearUsuario;
+    public javax.swing.JToggleButton btnCrearTarea;
     public javax.swing.JComboBox jEstados;
     private javax.swing.JLabel jLabel1;
     public javax.swing.JComboBox jResponsables;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextPane jTextPane1;
     private javax.swing.JLabel lblContraseña;
     private javax.swing.JLabel lblContraseña1;
     private javax.swing.JLabel lblContraseña2;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblUsuario;
-    public javax.swing.JPasswordField txtTiempoEstimado;
+    public javax.swing.JTextPane txtDescripcion;
+    public javax.swing.JTextField txtTiempoEstimado;
     public javax.swing.JTextField txtnombre;
     // End of variables declaration//GEN-END:variables
 }

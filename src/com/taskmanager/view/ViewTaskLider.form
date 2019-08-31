@@ -26,51 +26,42 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblUsuario" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblNombre" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="jScrollPane2" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="txtnombre" alignment="1" min="-2" pref="190" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="btnActualizar" max="32767" attributes="0"/>
-                                  <Component id="btnCrear" min="-2" pref="111" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblContraseña" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblContraseña1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblContraseña2" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtTiempoEstimado" alignment="0" min="-2" pref="123" max="-2" attributes="0"/>
-                                  <Component id="jResponsables" alignment="0" min="-2" pref="123" max="-2" attributes="0"/>
-                                  <Component id="jEstados" min="-2" pref="123" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                          <Component id="lblUsuario" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblNombre" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="225" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="jScrollPane2" alignment="1" max="32767" attributes="0"/>
+                          <Component id="txtnombre" alignment="1" min="-2" pref="190" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="btnActualizar" max="32767" attributes="0"/>
+                          <Component id="btnCrear" min="-2" pref="111" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="270" max="-2" attributes="0"/>
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jScrollPane1" alignment="0" min="-2" pref="641" max="-2" attributes="0"/>
+                          <Component id="lblContraseña" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblContraseña1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblContraseña2" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="txtTiempoEstimado" alignment="0" min="-2" pref="123" max="-2" attributes="0"/>
+                          <Component id="jResponsables" alignment="0" min="-2" pref="123" max="-2" attributes="0"/>
+                          <Component id="jEstados" min="-2" pref="123" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="270" max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="jScrollPane1" alignment="0" min="-2" pref="641" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -144,6 +135,9 @@
               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

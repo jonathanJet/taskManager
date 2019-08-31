@@ -7,6 +7,7 @@
 package com.taskmanager.controller;
 
 import com.taskmanager.dao.EstadoDAO;
+import com.taskmanager.dao.TareaDAO;
 import com.taskmanager.dao.UsuarioDAO;
 import com.taskmanager.model.Estado;
 import com.taskmanager.view.ViewTaskLider;
@@ -35,8 +36,8 @@ public class AdminController implements ActionListener {
         this.AdminView = viewTaskLider;
         this.userModel = user;
         
-        /*this.loginView.btnLogin.addActionListener(this);
-        this.loginView.btnCreateUsuario.addActionListener(this);    
+        this.AdminView.btnCrear.addActionListener(this);
+        /*this.loginView.btnCreateUsuario.addActionListener(this);    
     */
     }
     
@@ -58,7 +59,6 @@ public class AdminController implements ActionListener {
             usuario = usuarioDAO.traerResponsables().get(i);
             AdminView.jResponsables.addItem(usuario.getId()+"-"+usuario.getNombre());
         }   
-        
     }
 
     @Override
