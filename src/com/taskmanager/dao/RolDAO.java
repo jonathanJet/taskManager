@@ -30,7 +30,7 @@ public class RolDAO {
     public void crearRol(Rol rol) {
         try {
             PreparedStatement preparedStatement = 
-            connection.prepareStatement("insert into tbl_roles(nombre_rol, activo) values (?,?)");
+            connection.prepareStatement("insert into tbl_roles(id_rol, nombre_rol, activo) values ((select coalesce(max(id_rol),0) +1 from tbl_roles),?,?)");
 
             // Parameters start with 1
             preparedStatement.setString(1, rol.getNombre());

@@ -45,7 +45,7 @@ public class TareaDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
+    }/*
 
      public void addUserRol(Usuario user) {
         try {
@@ -137,5 +137,5 @@ public class TareaDAO {
             e.printStackTrace();
         }
         return user;
-    }
+    }*/
 }

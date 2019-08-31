@@ -30,7 +30,7 @@ public class EstadoDAO {
     public void crearEstado(Estado estado) {
         try {
             PreparedStatement preparedStatement = 
-            connection.prepareStatement("insert into tbl_estado(nombre_estado) values (?)");
+            connection.prepareStatement("insert into tbl_estado(id_estado,nombre_estado) values ((select coalesce(max(id_estado),0) +1 from tbl_estado),?)");
 
             // Parameters start with 1
             preparedStatement.setString(1, estado.getEstado());

@@ -27,10 +27,10 @@ public class UsuarioDAO {
         connection = ConexionDB.conectar();
     }
 
-    public void addUser(Usuario user) {
+    public void crearUsuario(Usuario user) {
         try {
             PreparedStatement preparedStatement = 
-            connection.prepareStatement("insert into tbl_usuario(nombre,usuario,contrasenia,activo) values (?, ?, ?, ? )");
+            connection.prepareStatement("insert into tbl_usuario(id_usuario, nombre,usuario,contrasenia,activo) values ((select coalesce(max(id_usuario),0) +1 from tbl_usuario), ?, ?, ?,? )");
 
             // Parameters start with 1
             preparedStatement.setString(1, user.getNombre());
@@ -49,11 +49,10 @@ public class UsuarioDAO {
      public void addUserRol(Usuario user) {
         try {
             PreparedStatement preparedStatement = 
-            connection.prepareStatement("insert into tbl_usuario_rol(id_usuario,id_rol) values (?, ?)");
+            connection.prepareStatement("insert into tbl_usuario_rol(id, id_usuario,id_rol) values ((select coalesce(max(id),0) +1 from tbl_usuario_rol),(select (max(id_usuario)) from tbl_usuario), ?)");
 
             // Parameters start with 1
-            preparedStatement.setInt(1, user.getId());
-            preparedStatement.setInt(2, user.getIdRol());
+            preparedStatement.setInt(1, user.getIdRol());
 
             preparedStatement.executeUpdate();
 
@@ -136,5 +135,24 @@ public class UsuarioDAO {
             e.printStackTrace();
         }
         return user;
+    }
+    
+    public int login(Usuario user) {
+        int band = 0;
+        try {
+            PreparedStatement preparedStatement = 
+                    connection.prepareStatement("select a.* from tbl_usuario a where a.usuario=? and a.contrasenia=?");
+
+            preparedStatement.setString(1, user.getUsuario());
+            preparedStatement.setString(2, user.getContrasenia());
+            
+            ResultSet rs = preparedStatement.executeQuery();
+            if (rs.next()) {
+                band = 1;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return band;
     }
 }
