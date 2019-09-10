@@ -75,6 +75,12 @@ public class CreateTask extends javax.swing.JFrame {
 
         lblContraseña2.setText("Estado");
 
+        txtTiempoEstimado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTiempoEstimadoKeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -140,6 +146,14 @@ public class CreateTask extends javax.swing.JFrame {
     private void btnCrearTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearTareaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCrearTareaActionPerformed
+
+    private void txtTiempoEstimadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTiempoEstimadoKeyTyped
+        // TODO add your handling code here:
+        char enter = evt.getKeyChar();
+        if(!(Character.isDigit(enter))){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtTiempoEstimadoKeyTyped
 
     /**
      * @param args the command line arguments

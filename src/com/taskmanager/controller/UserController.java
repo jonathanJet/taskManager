@@ -11,8 +11,10 @@ import com.taskmanager.model.*;
 import com.taskmanager.dao.UsuarioDAO;
 import com.taskmanager.view.CreateUser;
 import com.taskmanager.view.Login;
+import com.taskmanager.view.ViewTaskLider;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,9 +24,12 @@ public class UserController implements ActionListener{
 
     private CreateUser createUserView;
     private Usuario userModel;
+    private Usuario usuario = new Usuario();
     private Login loginView;
     private RolDAO rolDAO = new RolDAO();
     private Rol rol;
+    
+    private ViewTaskLider tareaView;
     
     public UserController(CreateUser view,Usuario model){
             System.out.println("V1121");
@@ -57,25 +62,33 @@ public class UserController implements ActionListener{
       if (e.getSource() == this.createUserView.btnCrearUsuario) {
           System.out.println(createUserView.txtnombre.getText());
           
-          userModel.setNombre(createUserView.txtnombre.getText());
-          userModel.setUsuario(createUserView.txtusuario.getText());
-          userModel.setContrasenia(createUserView.txtcontrasenia.getText());
-          userModel.setActivo(1);
+          usuario.setNombre(createUserView.txtnombre.getText());
+          usuario.setUsuario(createUserView.txtusuario.getText());
+          usuario.setContrasenia(createUserView.txtcontrasenia.getText());
+          usuario.setActivo(1);
           
           String[] parts = createUserView.roles.getSelectedItem().toString().split("-");
-          userModel.setIdRol(Integer.parseInt(parts[0].trim())); 
+          usuario.setIdRol(Integer.parseInt(parts[0].trim())); 
           UsuarioDAO usuarioDAO =new UsuarioDAO();
-          usuarioDAO.crearUsuario(userModel);
-          usuarioDAO.addUserRol(userModel);
+          usuarioDAO.crearUsuario(usuario);
+          usuarioDAO.addUserRol(usuario);
           //SAVE HEREs
           
-          loginView = new Login();
+          /*loginView = new Login();
           
           LoginController lc = new LoginController(loginView, new Usuario());
           lc.iniciar();
           createUserView.setVisible(false);
-          loginView.setVisible(true);
-
+          loginView.setVisible(true);*/
+          
+          JOptionPane.showMessageDialog(this.createUserView, "Usuario creado con éxito", "Guardar",JOptionPane.INFORMATION_MESSAGE);
+                   
+          tareaView = new ViewTaskLider();
+         
+          AdminController lc = new AdminController(tareaView, this.userModel);
+          lc.iniciar();
+          this.createUserView.dispose();
+          tareaView.setVisible(true);
           
       }
       

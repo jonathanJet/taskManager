@@ -13,7 +13,7 @@ import com.taskmanager.model.Estado;
 import com.taskmanager.model.Tarea;
 import com.taskmanager.model.Usuario;
 import com.taskmanager.view.CreateTask;
-import com.taskmanager.view.ViewTaskDev;
+import com.taskmanager.view.ViewTaskLider;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
@@ -33,6 +33,8 @@ public class TaskController implements ActionListener{
     
     private UsuarioDAO usuarioDAO = new UsuarioDAO();
     private Usuario usuario;
+    
+    private ViewTaskLider tareaView;
 
     public TaskController(CreateTask taskView,Usuario user){
     
@@ -86,8 +88,15 @@ public class TaskController implements ActionListener{
           TareaDAO tareaDAO =new TareaDAO();
           tareaDAO.crearTarea(tareaModel);
           
-          JOptionPane.showMessageDialog(this.taskView, "Registro creado con éxito", "Error",JOptionPane.ERROR_MESSAGE);
+          JOptionPane.showMessageDialog(this.taskView, "Registro creado con éxito", "Guardar",JOptionPane.INFORMATION_MESSAGE);
+                   
+          tareaView = new ViewTaskLider();
+          
+          AdminController lc = new AdminController(tareaView, this.userModel);
+          lc.iniciar();
           this.taskView.dispose();
+          tareaView.setVisible(true);
+
       }
     }  
     

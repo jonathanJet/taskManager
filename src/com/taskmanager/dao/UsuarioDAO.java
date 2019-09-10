@@ -15,6 +15,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
  *
  * @author administrador
@@ -137,6 +138,26 @@ public class UsuarioDAO {
         return user;
     }
     
+    public String getUserRol(Integer ID) {
+        String rol ="";
+        try {
+            PreparedStatement preparedStatement = 
+            connection.prepareStatement("select b.nombre_rol rol from tbl_usuario_rol a, tbl_roles b where a.id_rol = b.id_rol and a.id_usuario= ?");
+
+            // Parameters start with 1
+            preparedStatement.setInt(1, ID);
+
+            ResultSet rs = preparedStatement.executeQuery();
+            if (rs.next()) {
+                rol = rs.getString("rol");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return rol;
+    }
+    
     public Usuario login(Usuario user) {
          Usuario userLogin = new Usuario();
         try {
@@ -155,6 +176,7 @@ public class UsuarioDAO {
                 userLogin.setActivo(rs.getInt("activo"));
                 userLogin.setIdRol(rs.getInt("id_rol"));
             }
+            rs.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -79,7 +79,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnLogin">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Iniciar Sesi&#xf2;n"/>
+        <Property name="text" type="java.lang.String" value="Iniciar Sesi&#xf3;n"/>
         <Property name="inheritsPopupMenu" type="boolean" value="true"/>
         <Property name="name" type="java.lang.String" value="btnLogin" noResource="true"/>
       </Properties>

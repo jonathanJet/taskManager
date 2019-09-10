@@ -41,7 +41,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        btnLogin.setText("Iniciar Sesiòn");
+        btnLogin.setText("Iniciar Sesión");
         btnLogin.setInheritsPopupMenu(true);
         btnLogin.setName("btnLogin"); // NOI18N
         btnLogin.addActionListener(new java.awt.event.ActionListener() {

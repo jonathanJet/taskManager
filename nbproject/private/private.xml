@@ -7,14 +7,11 @@
             <file>file:/C:/Users/keyla/Documents/NetBeansProjects/taskManager/src/com/taskManager/controller/LoginController.java</file>
             <file>file:/C:/Users/keyla/Documents/NetBeansProjects/taskManager/src/com/taskManager/dao/UsuarioDAO.java</file>
             <file>file:/C:/Users/keyla/Documents/NetBeansProjects/taskManager/src/com/taskManager/controller/TaskController.java</file>
-            <file>file:/C:/Users/keyla/Documents/NetBeansProjects/taskManager/src/com/taskManager/dao/EstadoDAO.java</file>
             <file>file:/C:/Users/keyla/Documents/NetBeansProjects/taskManager/src/com/taskManager/controller/devController.java</file>
             <file>file:/C:/Users/keyla/Documents/NetBeansProjects/taskManager/src/com/taskManager/view/CreateTask.java</file>
-            <file>file:/C:/Users/keyla/Documents/NetBeansProjects/taskManager/src/com/taskManager/view/Login.java</file>
+            <file>file:/C:/Users/keyla/Documents/NetBeansProjects/taskManager/src/com/taskManager/view/ViewTaskDev.java</file>
             <file>file:/C:/Users/keyla/Documents/NetBeansProjects/taskManager/src/com/taskManager/util/ConexionDB.java</file>
-            <file>file:/C:/Users/keyla/Documents/NetBeansProjects/taskManager/src/com/taskManager/model/Tarea.java</file>
             <file>file:/C:/Users/keyla/Documents/NetBeansProjects/taskManager/src/com/taskManager/dao/TareaDAO.java</file>
-            <file>file:/C:/Users/keyla/Documents/NetBeansProjects/taskManager/src/com/taskManager/view/ViewTaskLider.java</file>
             <file>file:/C:/Users/keyla/Documents/NetBeansProjects/taskManager/src/com/taskManager/controller/UserController.java</file>
         </group>
     </open-files>

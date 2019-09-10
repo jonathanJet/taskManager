@@ -60,7 +60,7 @@ public class LoginController implements ActionListener{
               devController ac = new devController(frmDev,userModel);
               ac.iniciar();
               frmDev.setVisible(true);
-          } else if (userModel.getIdRol() == 2) {
+          } else if (userModel.getIdRol() == 2 || userModel.getIdRol() == 3) {
               ViewTaskLider frmLider = new ViewTaskLider();
               AdminController ac = new AdminController(frmLider,userModel);
               ac.iniciar();
