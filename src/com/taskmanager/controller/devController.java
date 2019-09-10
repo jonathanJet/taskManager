@@ -48,6 +48,10 @@ public class devController implements ActionListener    {
         tareaDao = new TareaDAO();
         devView.setTitle("Manejador de Tareas");
         devView.setLocationRelativeTo(null);
+        
+        devView.lblUsuario.setText("Usuario: " + userModel.getNombre());
+        devView.lblRol.setText(usuarioDAO.getUserRol(userModel.getId()));
+        
     
         devView.jEstados.removeAllItems();
         for (int i = 0; i < estadoDAO.traerEstados().size() ; i++) {
@@ -98,10 +102,9 @@ public class devController implements ActionListener    {
         devView.listTask.setBackground(Color.LIGHT_GRAY);
         devView.listTask.setForeground(Color.BLACK);
         devView.listTask.setRowHeight(25);
-
-        devView.lblUsuario.setText("Usuario: " + userModel.getNombre());
-        devView.lblRol.setText(usuarioDAO.getUserRol(userModel.getId()));
         
+        devView.listTask.setDefaultEditor(Object.class, null);
+
         devView.listTask.addMouseListener(new MouseAdapter() {
             
             @Override
@@ -119,8 +122,36 @@ public class devController implements ActionListener    {
                 }    
             }
         });
+        this.devView.btnActualizar.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                devView.txtTiempoReal.setText("");
+                devView.jEstados.setSelectedIndex(-1); 
+                devView.listTask.getSelectionModel().clearSelection();
+                model.setRowCount(0);
+
+                Object[] rowData = new Object[9];
+                for(int i = 0; i < tareaDao.cargarTareasXUsuario(userModel.getId()).size(); i++){
+                   tarea = tareaDao.cargarTareasXUsuario(userModel.getId()).get(i);
+                   rowData[0] = tarea.getId();
+                   rowData[1] = tarea.getNombre();
+                   rowData[2] = tarea.getDescripcion();
+                   rowData[3] = tarea.getTiempo_Estimado();
+                   rowData[4] = tarea.getTiempo_Real();
+                   rowData[5] = tarea.getUsuario();
+                   rowData[6] = tarea.getIdUsuario();
+                   rowData[7] = tarea.getIdEstado();
+                   rowData[8] = tarea.getEstado();
+
+                   model.addRow(rowData);
+                }
+
+            }
+        });
+       
         
-       this.devView.btnActualizar.addActionListener(new ActionListener() {
+       this.devView.btnModificar.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {

@@ -55,6 +55,17 @@ public class AdminController implements ActionListener {
     
         AdminView.setTitle("Manejador de Tareas");
         AdminView.setLocationRelativeTo(null);
+        
+        AdminView.lblUsuario.setText("Usuario: " + userModel.getNombre());
+        AdminView.lblRol.setText(usuarioDAO.getUserRol(userModel.getId()));
+        
+        if(AdminView.lblRol.getText().equals("Administrador")){
+            AdminView.btnCrearUsuario.setVisible(true);
+        }
+        else{
+            AdminView.btnCrearUsuario.setVisible(false);
+        }
+        
     
         AdminView.jEstados.removeAllItems();
         for (int i = 0; i < estadoDAO.traerEstados().size() ; i++) {
@@ -98,10 +109,10 @@ public class AdminController implements ActionListener {
            rowData[6] = tarea.getIdUsuario();
            rowData[7] = tarea.getIdEstado();
            rowData[8] = tarea.getEstado();
-
+           
            model.addRow(rowData);
         }
-        
+
         AdminView.listTask.setModel(model);
         AdminView.listTask.getColumnModel().getColumn(6).setWidth(0);
         AdminView.listTask.getColumnModel().getColumn(6).setMinWidth(0);
@@ -113,16 +124,8 @@ public class AdminController implements ActionListener {
         AdminView.listTask.setForeground(Color.WHITE);
         AdminView.listTask.setRowHeight(25);
 
-        AdminView.lblUsuario.setText("Usuario: " + userModel.getNombre());
-        AdminView.lblRol.setText(usuarioDAO.getUserRol(userModel.getId()));
-        
-        if(AdminView.lblRol.getText().equals("Administrador")){
-            AdminView.btnCrearUsuario.setVisible(true);
-        }
-        else{
-            AdminView.btnCrearUsuario.setVisible(false);
-        }
-        
+        AdminView.listTask.setDefaultEditor(Object.class, null);
+
         AdminView.listTask.addMouseListener(new MouseAdapter() {
             
             @Override
@@ -152,6 +155,36 @@ public class AdminController implements ActionListener {
         });
         
         this.AdminView.btnActualizar.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AdminView.txtnombre.setText("");
+                AdminView.txtDescripcion.setText("");
+                AdminView.txtTiempoEstimado.setText("");
+                AdminView.jEstados.setSelectedIndex(-1); 
+                AdminView.jResponsables.setSelectedIndex(-1);
+                AdminView.listTask.getSelectionModel().clearSelection();
+                model.setRowCount(0);
+
+                Object[] rowData = new Object[9];
+                for(int i = 0; i < tareaDao.cargarTareas().size(); i++){
+                   tarea = tareaDao.cargarTareas().get(i);
+                   rowData[0] = tarea.getId();
+                   rowData[1] = tarea.getNombre();
+                   rowData[2] = tarea.getDescripcion();
+                   rowData[3] = tarea.getTiempo_Estimado();
+                   rowData[4] = tarea.getTiempo_Real();
+                   rowData[5] = tarea.getUsuario();
+                   rowData[6] = tarea.getIdUsuario();
+                   rowData[7] = tarea.getIdEstado();
+                   rowData[8] = tarea.getEstado();
+
+                   model.addRow(rowData);
+                }
+            }
+        });
+        
+        this.AdminView.btnModificar.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {

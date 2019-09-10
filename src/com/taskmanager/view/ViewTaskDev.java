@@ -6,6 +6,9 @@
 
 package com.taskmanager.view;
 
+import com.taskmanager.controller.LoginController;
+import com.taskmanager.model.Usuario;
+
 /**
  *
  * @author Keylis
@@ -31,15 +34,24 @@ public class ViewTaskDev extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         listTask = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        btnActualizar = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
         lblContraseña = new javax.swing.JLabel();
         lblContraseña2 = new javax.swing.JLabel();
         jEstados = new javax.swing.JComboBox();
         lblUsuario = new javax.swing.JLabel();
         lblRol = new javax.swing.JLabel();
         txtTiempoReal = new javax.swing.JTextField();
+        btnActualizar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         listTask.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -59,10 +71,10 @@ public class ViewTaskDev extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 102, 153));
         jLabel1.setText("Listado de Tareas");
 
-        btnActualizar.setText("Actualizar Tarea");
-        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+        btnModificar.setText("Modificar Tarea");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnActualizarActionPerformed(evt);
+                btnModificarActionPerformed(evt);
             }
         });
 
@@ -77,6 +89,8 @@ public class ViewTaskDev extends javax.swing.JFrame {
                 txtTiempoRealKeyTyped(evt);
             }
         });
+
+        btnActualizar.setText("Actualizar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -96,10 +110,14 @@ public class ViewTaskDev extends javax.swing.JFrame {
                                     .addComponent(jEstados, 0, 123, Short.MAX_VALUE)
                                     .addComponent(txtTiempoReal))
                                 .addGap(83, 83, 83)
-                                .addComponent(btnActualizar))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 641, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblRol, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnModificar))
+                            .addComponent(lblRol, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnActualizar))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 641, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(273, 273, 273)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -110,15 +128,17 @@ public class ViewTaskDev extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnActualizar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblRol, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnActualizar)
+                    .addComponent(btnModificar)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtTiempoReal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -132,9 +152,9 @@ public class ViewTaskDev extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnActualizarActionPerformed
+    }//GEN-LAST:event_btnModificarActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
@@ -147,6 +167,21 @@ public class ViewTaskDev extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_txtTiempoRealKeyTyped
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here
+    
+    }//GEN-LAST:event_formWindowClosed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+          Login loginView = new Login();
+          
+          LoginController lc = new LoginController(loginView, new Usuario());
+          lc.iniciar();
+          this.dispose();
+          loginView.setVisible(true);
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
@@ -185,6 +220,7 @@ public class ViewTaskDev extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnActualizar;
+    public javax.swing.JButton btnModificar;
     public javax.swing.JComboBox jEstados;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

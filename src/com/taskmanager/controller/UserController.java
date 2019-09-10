@@ -25,7 +25,6 @@ public class UserController implements ActionListener{
     private CreateUser createUserView;
     private Usuario userModel;
     private Usuario usuario = new Usuario();
-    private Login loginView;
     private RolDAO rolDAO = new RolDAO();
     private Rol rol;
     

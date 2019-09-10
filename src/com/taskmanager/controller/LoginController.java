@@ -39,10 +39,8 @@ public class LoginController implements ActionListener{
     }
     
     public void iniciar(){
-    
         loginView.setTitle("LOGIN");
         loginView.setLocationRelativeTo(null);
-    
     }
 
     @Override
@@ -68,10 +66,11 @@ public class LoginController implements ActionListener{
           }
           else {
               JOptionPane.showMessageDialog(loginView, "Usuario o clave inválido", "Error",JOptionPane.ERROR_MESSAGE);
+              System.out.println("Usuario o clave inválido");
+              System.exit(0);
           }
-          loginView.dispose();
-
-          
+          this.loginView.dispose();
+                    
       }/*else if(e.getSource() == this.loginView.btnCreateUsuario){
       
           UserController uc = new UserController(createUserView, userModel);

@@ -75,6 +75,7 @@ public class CreateTask extends javax.swing.JFrame {
 
         lblContraseña2.setText("Estado");
 
+        txtTiempoEstimado.setText("0");
         txtTiempoEstimado.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtTiempoEstimadoKeyTyped(evt);

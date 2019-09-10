@@ -159,15 +159,17 @@ public class UsuarioDAO {
     }
     
     public Usuario login(Usuario user) {
-         Usuario userLogin = new Usuario();
+        Usuario userLogin = new Usuario();
+        ResultSet rs = null;
+        PreparedStatement preparedStatement = null;
         try {
-            PreparedStatement preparedStatement = 
+            preparedStatement = 
                     connection.prepareStatement("select c.*,b.* from tbl_usuario_rol a, tbl_usuario b, tbl_roles c where c.id_rol=a.id_rol and a.id_usuario =b.id_usuario and b.usuario=? and b.contrasenia=?");
 
             preparedStatement.setString(1, user.getUsuario());
             preparedStatement.setString(2, user.getContrasenia());
             
-            ResultSet rs = preparedStatement.executeQuery();
+            rs = preparedStatement.executeQuery();
             if (rs.next()) {
                 userLogin.setId(rs.getInt("id_usuario"));
                 userLogin.setNombre(rs.getString("nombre"));
@@ -180,6 +182,23 @@ public class UsuarioDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        finally {
+        if (rs != null) {
+            try {
+                rs.close();
+            } catch (SQLException e) { /* ignored */}
+        }
+        if (preparedStatement != null) {
+            try {
+                preparedStatement.close();
+            } catch (SQLException e) { /* ignored */}
+        }
+        if (connection != null) {
+            try {
+                connection.close();
+            } catch (SQLException e) { /* ignored */}
+        }
+    }
         return userLogin;
     }
     
